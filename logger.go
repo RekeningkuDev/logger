@@ -2,6 +2,7 @@ package logger
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/sirupsen/logrus"
 	"os"
 )
@@ -69,4 +70,8 @@ func New(lvl Level) FieldLogger {
 func JSONMarshal(structValue interface{}) string {
 	s, _ := json.Marshal(structValue)
 	return string(s)
+}
+
+func Struct(structValue interface{}) string{
+	return fmt.Sprintf("%+v", structValue)
 }
