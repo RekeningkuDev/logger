@@ -66,7 +66,7 @@ func New(lvl Level) FieldLogger {
 	return Logrus{l}
 }
 
-func LogJSON(structValue interface{}) string {
+func JSONMarshal(structValue interface{}) string {
 	s, _ := json.Marshal(structValue)
 	return string(s)
 }
