@@ -1,6 +1,7 @@
 package logger
 
 import (
+	"encoding/json"
 	"github.com/sirupsen/logrus"
 	"os"
 )
@@ -63,4 +64,9 @@ func New(lvl Level) FieldLogger {
 		ForceColors: dev,
 	}
 	return Logrus{l}
+}
+
+func LogJSON(structValue interface{}) string {
+	s, _ := json.Marshal(structValue)
+	return string(s)
 }
