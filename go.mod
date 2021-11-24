@@ -2,6 +2,13 @@ module github.com/RekeningkuDev/logger
 
 go 1.17
 
-require github.com/sirupsen/logrus v1.8.1
+require (
+	github.com/sirupsen/logrus v1.8.1
+	go.uber.org/zap v1.19.1
+)
 
-require golang.org/x/sys v0.0.0-20191026070338-33540a1f6037 // indirect
+require (
+	go.uber.org/atomic v1.7.0 // indirect
+	go.uber.org/multierr v1.6.0 // indirect
+	golang.org/x/sys v0.0.0-20210510120138-977fb7262007 // indirect
+)
