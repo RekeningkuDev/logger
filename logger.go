@@ -70,6 +70,12 @@ func New(lvl Level) FieldLogger {
 	return Logrus{l}
 }
 
+
+func (l *StructuredLog) OnDebug(logging func()) bool{
+	if l.level == DebugLevel {
+		logging()
+	}
+}
 func JSONMarshal(structValue interface{}) string {
 	s, _ := json.Marshal(structValue)
 	return string(s)
