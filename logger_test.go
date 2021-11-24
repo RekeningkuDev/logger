@@ -18,7 +18,9 @@ func BenchmarkStructuredLogger(b *testing.B){
 	l := NewStructuredLog(InfoLevel)
 	test := New(DebugLevel)
 	for i := 0; i < b.N; i ++ {
-		l.Debug("failed to fetch URL", l.DebugAny("test", test))
+		l.OnDebug(func() {
+			l.Debug("failed to fetch URL", l.DebugAny("test", test))
+		})
 	}
 	l.Sync()
 }

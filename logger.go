@@ -71,7 +71,7 @@ func New(lvl Level) FieldLogger {
 }
 
 
-func (l *StructuredLog) OnDebug(logging func()) bool{
+func (l *StructuredLog) OnDebug(logging func()){
 	if l.level == DebugLevel {
 		logging()
 	}
