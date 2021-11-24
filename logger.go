@@ -56,8 +56,11 @@ func New(lvl Level) FieldLogger {
 	e := os.Getenv("GO_ENV")
 	if len(e) == 0 {
 		e = "development"
+	}else if lvl == InfoLevel {
+		e = "production"
 	}
 	dev := e == "development"
+
 	l := logrus.New()
 	l.SetOutput(os.Stdout)
 	l.Level = lvl

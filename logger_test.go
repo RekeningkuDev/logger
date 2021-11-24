@@ -5,18 +5,20 @@ import (
 )
 
 func BenchmarkLoggerDebugAllocation(b *testing.B){
-	l := New(DebugLevel)
+	l := New(InfoLevel)
 	for i := 0; i < b.N; i ++{
 		l.WithFields(map[string]interface{}{
 			"test": "test",
-		}).Debug()
+		}).Info()
 	}
 }
 
+
 func BenchmarkStructuredLogger(b *testing.B){
 	l := NewStructuredLog(InfoLevel)
+	test := New(DebugLevel)
 	for i := 0; i < b.N; i ++ {
-		l.Info("failed to fetch URL", String("test", "test"))
+		l.Debug("failed to fetch URL", l.DebugAny("test", test))
 	}
 	l.Sync()
 }
